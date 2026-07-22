@@ -1,5 +1,6 @@
 SkillSync – Skill Swap & Resume Builder
 
+
 📌 Overview
 
 SkillSync is a web-based platform that enables users to exchange skills, connect with learners, and create professional resumes. The platform provides a collaborative environment where users can share their expertise, discover new skills, interact with others, and build career-ready resumes.
