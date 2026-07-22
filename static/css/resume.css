@@ -1,0 +1,165 @@
+/* =============================
+   Container & Layout
+============================= */
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+/* Form Section */
+.form-section {
+    flex: 1 1 400px;
+    background: #f9f9f9;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.1);
+}
+
+.form-section h2 {
+    margin-bottom: 1rem;
+    color: #4f46e5; /* Purple gradient accent */
+}
+
+.input {
+    margin-bottom: 1rem;
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.input input,
+.input select,
+.input textarea {
+    flex: 1;
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    font-size: 1rem;
+}
+
+.input textarea {
+    min-height: 80px;
+    resize: vertical;
+}
+
+/* Section headers inside form */
+.section .row p {
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+    display: inline-block;
+}
+
+/* Add button (+) */
+.add-btn {
+    cursor: pointer;
+    color: #5a56af;
+    /* margin-left: 0.5rem; */
+    transition: color 0.3s ease; /* smooth color change */
+    
+}
+
+.add-btn:hover {
+    color: blue;
+    font-size: large;
+    font-weight: bold;
+    
+}
+.trash-icon {
+  color: black; /* default color */
+  cursor: pointer; /* makes it look clickable */
+  transition: color 0.3s ease; /* smooth color change */
+}
+
+.trash-icon:hover {
+  color: red; /* turns red on hover */
+  font-size: large;
+}
+
+
+/* Resume Section */
+.resume-section {
+    flex: 1 1 400px;
+    background: #fff;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.1);
+}
+
+.resume-section header h1 {
+    font-size: 2rem;
+    color: #1e3a8a;
+}
+
+.resume-section header h4 {
+    font-size: 1.2rem;
+    color: #4b5563;
+    margin-bottom: 1rem;
+}
+
+.resume-section .flex {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    font-size: 0.9rem;
+    color: #374151;
+}
+
+.resume-section section {
+    margin-top: 1.5rem;
+}
+
+.resume-section section h2 {
+    font-size: 1.2rem;
+    color: #4f46e5;
+    margin-bottom: 0.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.resume-section section ul,
+.resume-section section div {
+    margin-left: 1rem;
+}
+
+/* Buttons */
+.btn {
+    background: #4f46e5;
+    color: #fff;
+    border: none;
+    padding: 0.6rem 1.2rem;
+    border-radius: 8px;
+    cursor: pointer;
+    margin-top: 1rem;
+    transition: all 0.2s ease;
+}
+
+.btn:hover {
+    background: #3730a3;
+}
+
+/* Prevent overriding navbar/footer */
+body {
+    background: #f0f2f5; /* optional light background */
+}
+
+/* Responsive */
+@media (max-width: 992px) {
+    .container {
+        flex-direction: column;
+    }
+}
+
+/* Reduce size only for Degree / Post / Project / Achievement names in generated resume */
+#education-display h3,
+#experience-display h3,
+#project-display h3,
+#achivement-display h3 {
+  font-size: 1rem;         /* smaller than default h3 */
+  font-weight: 600;        /* keep it readable but not bold-heavy */
+  /* color: #1e3a8a; */ 
+          color: #000000;  /*professional dark blue tone */
+  margin-bottom: 0.2rem;   /* compact spacing */
+}

@@ -1,0 +1,259 @@
+{% extends "base.html" %}
+
+{% block title %}Resume Builder{% endblock %}
+
+{% block content %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Resume Builder</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/resume.css') }}">
+  <script src="https://kit.fontawesome.com/d5d77cd114.js" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+</head>
+<body>
+  
+ 
+  <div class="container">
+    <div class="form-section" id="form">
+      <h2>Resume Form</h2>
+      <!-- Personal Info -->
+      <div class="input"><input type="text" class="box" id="name" placeholder="Full Name"></div>
+      <div class="input"><input type="text" class="box" id="prof" placeholder="Enter Profession"></div>
+      <div class="input">
+        <input type="email" class="box" id="email" placeholder="Email Address">
+        <input type="text" class="box" id="phone" placeholder="Phone Number">
+      </div>
+      <div class="input">
+        <select id="country" class="box">
+          <option value="Select Your Country">Select Your Country</option>
+          <option value="India">India</option>
+          <option value="America">America</option>
+          <option value="England">England</option>
+        </select>
+        <input type="text" class="box" id="city" placeholder="City Name">
+      </div>
+      <div class="input">
+        <input type="text" class="box" id="linkedin" placeholder="Enter LinkedIn Link">
+        <input type="text" class="box" id="github" placeholder="Enter Github Link">
+      </div>
+      <div class="row"><p>About Me</p></div>
+      <div class="input"><textarea id="summary" class="box" placeholder="Write about Yourself"></textarea></div>
+
+      <!-- Skills -->
+      <div class="section" id="skills-section">
+        <div class="row">
+          <p>Skills</p>
+          <i class="fa-solid fa-plus add-btn" data-type="skills"></i>
+        </div>
+        <div class="row2">
+          <div class="input"><span>Skill 1</span></div>
+          <div class="input">
+            <input type="text" class="box" id="skills" placeholder="Skills (e.g., HTML, CSS, JS)">
+            <input type="number" class="box" placeholder="Rate Your Skill">
+          </div>
+        </div>
+      </div>
+
+      <!-- Education -->
+      <div class="section" id="education-section">
+        <div class="row">
+          <p>Education</p>
+          <i class="fa-solid fa-plus add-btn" data-type="education"></i>
+        </div>
+        <div class="row2">
+          <div class="input"><span>Education 1</span></div>
+          <div class="input">
+            <input type="text" class="box" id="d-name" placeholder="Degree Name">
+            <input type="text" class="box" id="U-name" placeholder="University Name">
+          </div>
+          <div class="input">
+            <input type="date" class="box" placeholder="Start Date">
+            <input type="date" class="box end-date" placeholder="End Date">
+            <input type="checkbox" class="present">Present
+          </div>
+          <div class="detail-input">
+            <div class="input">
+              <!-- <input type="text" placeholder="Enter Details" class="box details-input"> -->
+              <!-- <i class="fa-solid fa-plus add-detail-btn"></i> -->
+            </div>
+            <ul class="details-list" id="edu-detail"></ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Experience -->
+      <div class="section" id="experience-section">
+        <div class="row">
+          <p>Experience</p>
+          <i class="fa-solid fa-plus add-btn" data-type="experience"></i>
+        </div>
+        <div class="row2">
+          <div class="input"><span>Experience 1</span></div>
+          <div class="input">
+            <input type="text" class="box" id="p-name" placeholder="Post Name">
+            <input type="text" class="box" id="c-name" placeholder="Company Name">
+          </div>
+          <div class="input">
+            <input type="date" class="box" placeholder="Start Date">
+            <input type="date" class="box end-date" placeholder="End Date">
+            <input type="checkbox" class="present">Present
+          </div>
+          <div class="detail-input">
+            <div class="input">
+              <!-- <input type="text" placeholder="Enter Details" class="box details-input"> -->
+              <!-- <i class="fa-solid fa-plus add-detail-btn"></i> -->
+            </div>
+            <ul class="details-list" id="exp-detail"></ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Projects -->
+      <div class="section" id="project-section">
+        <div class="row">
+          <p>Project</p>
+          <i class="fa-solid fa-plus add-btn" data-type="project"></i>
+        </div>
+        <div class="row2">
+          <div class="input"><span>Project 1</span></div>
+          <div class="input"><input type="text" class="box" id="project-name" placeholder="Project Name"></div>
+          <div class="input">
+            <input type="date" class="box" placeholder="Start Date">
+            <input type="date" class="box end-date" placeholder="End Date">
+            <input type="checkbox" class="present">Present
+          </div>
+          <div class="detail-input">
+            <div class="input">
+              <!-- <input type="text" placeholder="Enter Details" class="box details-input"> -->
+              <!-- <i class="fa-solid fa-plus add-detail-btn"></i> -->
+            </div>
+            <ul class="details-list" id="proj-detail"></ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Achievements -->
+      <div class="section" id="achivement-section">
+        <div class="row">
+          <p>Achievement</p>
+          <i class="fa-solid fa-plus add-btn" data-type="achivement"></i>
+        </div>
+        <div class="row2">
+          <div class="input"><span>Achievement 1</span></div>
+          <div class="input"><input type="text" class="box" id="a-name" placeholder="Achievement title"></div>
+          <div class="detail-input">
+            <div class="input">
+              <!-- <input type="text" placeholder="Enter Details" class="box details-input"> -->
+              <!-- <i class="fa-solid fa-plus add-detail-btn"></i> -->
+            </div>
+            <ul class="details-list" id="achiv-detail"></ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Languages -->
+      <div class="section" id="language-section">
+        <div class="row">
+          <p>Language</p>
+          <i class="fa-solid fa-plus add-btn" data-type="language"></i>
+        </div>
+        <div class="row2">
+          <div class="input"><span>Language 1</span></div>
+          <div class="input"><input type="text" class="box" placeholder="Languages (e.g., English, Hindi)"></div>
+        </div>
+      </div>
+
+      <!-- Hobbies -->
+      <div class="section" id="hobby-section">
+        <div class="row">
+          <p>Hobbies</p>
+          <i class="fa-solid fa-plus add-btn" data-type="hobby"></i>
+        </div>
+        <div class="row2">
+          <div class="input"><span>Hobby 1</span></div>
+          <div class="input"><input type="text" class="box" placeholder="Hobbies (e.g., Coding, Reading)"></div>
+        </div>
+      </div>
+
+      <button class="btn" onclick="handleGenerateResume()">Generate Resume</button>
+    </div>
+
+    <div class="resume-section" id="resume">
+      <header>
+        <h1 id="r-name"></h1>
+        <h4 id="r-prof"></h4>
+        <div class="flex">
+          <h5>Email:</h5><p id="r-email"></p> | 
+          <h5>Phone:</h5><p id="r-phone"></p>
+        </div>
+        <div class="flex">
+          <h5>Country:</h5><p id="r-country"></p>,
+          <h5>City:</h5><p id="r-city"></p>
+        </div>
+        <div class="flex">
+          <h5>LinkedIn:</h5><p id="r-linkedin"></p> | 
+          <h5>Github:</h5><p id="r-github"></p>
+        </div>
+      </header>
+
+      <section class="summary">
+        <h2><i class="fa-solid fa-user-tie"></i>About Me</h2>
+        <p id="r-summary"></p>
+      </section>
+
+      <section class="experience">
+        <h2><i class="fa-solid fa-briefcase"></i>Experience</h2>
+        <div id="experience-display"></div>
+      </section>
+
+      <section class="education">
+        <h2><i class="fa-solid fa-graduation-cap"></i>Education</h2>
+        <div id="education-display"></div>
+      </section>
+
+      <section class="project">
+        <h2><i class="fa-solid fa-desktop"></i>Project</h2>
+        <div id="project-display"></div>
+      </section>
+
+      <section class="skills">
+        <h2><i class="fa-solid fa-rocket"></i>Skills</h2>
+        <ul></ul>
+      </section>
+
+      <section class="achievements">
+        <h2><i class="fa-solid fa-trophy"></i>Achievements</h2>
+        <div id="achivement-display"></div>
+      </section>
+
+      <section class="languages">
+        <h2><i class="fa-solid fa-globe"></i>Languages</h2>
+        <ul></ul>
+      </section>
+
+      <section class="hobbies">
+        <h2><i class="fa-solid fa-bullseye"></i>Hobbies</h2>
+        <ul></ul>
+      </section>
+
+      <div class="no-print">
+  <button id="editBtn" class="btn">Edit</button>
+  <button id="downloadBtn" class="btn">Download</button>
+</div>
+
+    </div>
+  </div>
+  <!-- <script src="script.js"></script> -->
+   {% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/script.js') }}"></script>
+
+</body>
+</html>
+{% endblock %}
